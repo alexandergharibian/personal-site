@@ -213,8 +213,49 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### GitHub Pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This site is configured for static export and deployment to GitHub Pages.
+
+#### Initial Setup
+
+1. **Enable GitHub Pages:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+
+2. **Configure Base Path:**
+   - The site is configured for repository name: `personal-site`
+   - Your site will be available at: `https://alexandergharibian.github.io/personal-site/`
+   - To use a custom domain, update `next.config.ts`:
+     ```typescript
+     basePath: "", // Remove basePath for custom domain
+     ```
+
+3. **Deploy:**
+   - Push changes to the `main` branch
+   - GitHub Actions will automatically build and deploy
+   - Check the **Actions** tab to monitor deployment status
+
+#### Build Scripts
+
+- `pnpm export` - Build the static export (outputs to `out/` directory)
+
+#### Manual Deployment
+
+If you need to deploy manually:
+
+```bash
+pnpm run export
+# The static files will be in the `out/` directory
+```
+
+### Deploy on Vercel
+
+Alternatively, you can deploy to [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+**Note:** For Vercel deployment, you may need to remove the `output: "export"` and `basePath` settings from `next.config.ts`.
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
