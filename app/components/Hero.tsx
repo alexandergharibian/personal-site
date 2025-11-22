@@ -1,0 +1,25 @@
+import { HeroProps } from "@/config";
+
+export default function Hero({ name, specialty, summary, email }: HeroProps) {
+  return (
+    <section className="py-24 md:py-32" id="hero">
+      <h1 className="mb-1.5 font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:mb-0 md:text-9xl">
+        {name}
+      </h1>
+      <p className="mb-9 font-serif text-4xl leading-[46px] font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl">
+        {specialty}
+      </p>
+      <p className="mb-16 text-base font-normal text-neutral md:text-lg">
+        {summary}
+      </p>
+
+      <a
+        className="inline-block rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff]"
+        href={`mailto:${email}`}
+      >
+        Get in Touch
+      </a>
+    </section>
+  );
+}
+
