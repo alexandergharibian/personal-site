@@ -80,10 +80,19 @@ export const SITE_CONTENT: SiteContent = {
   },
   experience: [
     {
+      company: "Spotify",
+      position: "Senior Engineer",
+      startDate: "May 2022",
+      endDate: "Present",
+      summary: [
+        "Worked on a team building recommendation systems for Spotify's Home Page"
+      ],
+    },
+    {
       company: "Capital One",
       position: "Senior Associate Software Engineer",
       startDate: "July 2020",
-      endDate: "Present",
+      endDate: "April 2022",
       summary: [
         "Led a team of 3 to implement Secured Card specific functionality in the website used by Capital One's call center agents, such as the ability to check the balance of and pay the security deposit on the account",
         "Developed RESTful Golang orchestration AWS Lambda APIs to enable millions of Capital One's Secured Card customers to increase their credit limit after their account has been established",
