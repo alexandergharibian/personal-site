@@ -81,7 +81,7 @@ export const SITE_CONTENT: SiteContent = {
   experience: [
     {
       company: "Spotify",
-      position: "Senior Engineer",
+      position: "Senior Software Engineer",
       startDate: "May 2022",
       endDate: "Present",
       summary: [
