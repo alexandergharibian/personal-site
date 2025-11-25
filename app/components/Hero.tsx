@@ -15,18 +15,21 @@ interface HeroComponentProps extends HeroProps {
 export default function Hero({ name, specialty, summary, email, socialLinks = [] }: HeroComponentProps) {
   const [showEmail, setShowEmail] = useState(false);
   const [copied, setCopied] = useState(false);
-  const emailContainerRef = useRef<HTMLDivElement>(null);
+  const emailButtonRef = useRef<HTMLButtonElement>(null);
+  const emailOverlayRef = useRef<HTMLDivElement>(null);
 
   const handleShowEmail = () => {
-    setShowEmail(true);
+    setShowEmail(!showEmail);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         showEmail &&
-        emailContainerRef.current &&
-        !emailContainerRef.current.contains(event.target as Node)
+        emailButtonRef.current &&
+        emailOverlayRef.current &&
+        !emailButtonRef.current.contains(event.target as Node) &&
+        !emailOverlayRef.current.contains(event.target as Node)
       ) {
         setShowEmail(false);
         setCopied(false);
@@ -60,7 +63,7 @@ export default function Hero({ name, specialty, summary, email, socialLinks = []
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="inline-block ml-2"
+      className="inline-block"
     >
       <path
         d="M5.5 3.5H3.5C2.94772 3.5 2.5 3.94772 2.5 4.5V12.5C2.5 13.0523 2.94772 13.5 3.5 13.5H11.5C12.0523 13.5 12.5 13.0523 12.5 12.5V10.5"
@@ -91,37 +94,38 @@ export default function Hero({ name, specialty, summary, email, socialLinks = []
         {summary}
       </p>
 
-      <div className="flex flex-wrap items-center gap-3">
-        {!showEmail ? (
-          <button
-            onClick={handleShowEmail}
-            className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff] cursor-pointer hover:opacity-90 transition-opacity"
-            aria-label="Show email"
+      <div className="flex flex-wrap items-center gap-3 relative">
+        <button
+          ref={emailButtonRef}
+          onClick={handleShowEmail}
+          className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff] cursor-pointer hover:opacity-90 transition-opacity"
+          aria-label="Show email"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-          </button>
-        ) : (
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </button>
+
+        {showEmail && (
           <div
-            ref={emailContainerRef}
-            className="inline-flex items-center rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff]"
+            ref={emailOverlayRef}
+            className="absolute top-full left-0 mt-2 z-50 rounded-lg bg-[#1e293b] border border-[#334155] shadow-lg px-4 py-3 flex items-center gap-3 min-w-[200px]"
           >
-            <span>{email}</span>
+            <span className="text-white text-sm">{email}</span>
             <button
               onClick={handleCopyEmail}
-              className="ml-3 p-1 hover:opacity-80 transition-opacity"
+              className="p-1.5 hover:opacity-80 transition-opacity text-white flex-shrink-0"
               aria-label="Copy email"
               title={copied ? "Copied!" : "Copy email"}
             >
