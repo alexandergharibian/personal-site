@@ -26,8 +26,6 @@ export default function Footer({ author, socialLinks }: FooterProps) {
       </ul>
       <p className="text-xs">
         {author} © {currentYear}.{" "}
-        <span className="text-neutral">Designed & Developed by</span> Moisés
-        Machuca
       </p>
     </footer>
   );
