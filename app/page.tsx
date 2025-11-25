@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Header siteLogo={SITE_CONFIG.siteLogo} navLinks={SITE_CONFIG.navLinks} />
       <main className="mx-auto max-w-3xl px-5">
-        <Hero {...SITE_CONTENT.hero} />
+        <Hero {...SITE_CONTENT.hero} socialLinks={SITE_CONFIG.socialLinks} />
         <Experience experience={SITE_CONTENT.experience} />
         <Projects projects={SITE_CONTENT.projects} />
         <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
