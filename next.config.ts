@@ -2,9 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  // If using a custom domain, set basePath to "" or remove this line
-  // For GitHub Pages with repo name, use: basePath: "/personal-site"
-  basePath: process.env.NODE_ENV === "production" ? "/personal-site" : "",
+  // Empty basePath for GitHub Pages user/organization site (alexandergharibian.github.io)
+  basePath: "",
   images: {
     unoptimized: true, // Required for static export
   },

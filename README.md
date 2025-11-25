@@ -217,7 +217,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ### GitHub Pages
 
-This site is configured for static export and deployment to GitHub Pages.
+This site is configured for static export and deployment to GitHub Pages at `alexandergharibian.github.io`.
 
 #### Initial Setup
 
@@ -226,13 +226,10 @@ This site is configured for static export and deployment to GitHub Pages.
    - Navigate to **Settings** → **Pages**
    - Under **Source**, select **GitHub Actions**
 
-2. **Configure Base Path:**
-   - The site is configured for repository name: `personal-site`
-   - Your site will be available at: `https://alexandergharibian.github.io/personal-site/`
-   - To use a custom domain, update `next.config.ts`:
-     ```typescript
-     basePath: "", // Remove basePath for custom domain
-     ```
+2. **Configuration:**
+   - The site is configured for the root domain: `alexandergharibian.github.io`
+   - Your site will be available at: `https://alexandergharibian.github.io/`
+   - The `basePath` is set to `""` (empty) in `next.config.ts` for root domain deployment
 
 3. **Deploy:**
    - Push changes to the `main` branch
